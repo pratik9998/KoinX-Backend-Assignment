@@ -1,0 +1,28 @@
+{
+  "name": "koinx-backend-assignment",
+  "version": "1.0.0",
+  "description": "backend assignment from KoinX",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pratik9998/KoinX-Backend-Assignment.git"
+  },
+  "author": "Pratikkumar Sarvaiya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pratik9998/KoinX-Backend-Assignment/issues"
+  },
+  "homepage": "https://github.com/pratik9998/KoinX-Backend-Assignment#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.4"
+  }
+}
