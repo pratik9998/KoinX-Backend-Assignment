@@ -39,7 +39,7 @@ const fetchCryptoData = async () => {
                 { upsert: true, new: true }
             );
 
-            console.log("fetched from coingecko")
+            console.log(`${coin} details fetched from coingecko`)
         }
 
         

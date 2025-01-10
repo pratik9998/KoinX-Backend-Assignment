@@ -1,9 +1,9 @@
 import {asyncHandler} from "../utils/asyncHandler.js"
 import {ApiError} from "../utils/ApiError.js"
-import {ApiResponse} from "../utils/ApiResponse.js"
 import Crypto from "../models/crypto.model.js"
 
 const getStats = asyncHandler (async (req, res) => {
+
     try {
         
         const {coin} = req.query
@@ -15,8 +15,13 @@ const getStats = asyncHandler (async (req, res) => {
 
         // console.log(cryptoData)
 
-        return res.status(200)
-        .json( new ApiResponse (200, cryptoData, "stats fetched successfully") )
+        const responseData = {
+            price : cryptoData.latestStats.price,
+            marketCap : cryptoData.latestStats.marketCap,
+            "24hChange" : cryptoData.latestStats.change24h,
+        }
+
+        return res.status(200).json( responseData )
 
     } catch (error) {
         throw new ApiError (500, `error while getting stats: ${error}`)
