@@ -49,9 +49,11 @@ const cryptoSchema = new mongoose.Schema(
     {timestamps : true}
 )
 
-cryptoSchema.pre("save", function (next){
+cryptoSchema.pre("save", async function (next){
+    // console.log(this.priceHistory.length)
     if (this.priceHistory.length > 100) {
-        this.priceHistory = this.priceHistory.slice(-100)
+        this.priceHistory = await this.priceHistory.slice(-100)
+        // console.log(this.priceHistory.length)
     }
     next()
 })

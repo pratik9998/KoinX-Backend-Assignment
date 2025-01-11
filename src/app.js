@@ -14,8 +14,10 @@ fetchCryptoData()
 
 import {getStats} from "./controllers/stats.controller.js"
 import {getDeviation} from "./controllers/deviation.controller.js"
+import {healthCheck} from "./controllers/healthcheck.controller.js"
 
 app.get("/stats", getStats)
 app.get("/deviation", getDeviation)
+app.post("/healthcheck", healthCheck)
 
 export {app}

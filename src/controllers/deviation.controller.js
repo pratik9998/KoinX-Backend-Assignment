@@ -18,7 +18,11 @@ const getDeviation = asyncHandler (async (req, res) => {
         const prices = cryptoData.priceHistory.slice(-100).map(data => data.price)
         const deviation = std(prices)
 
-        return res.status(200).json( { deviation : deviation} )
+        const responseData = {
+            deviation : deviation
+        }
+
+        return res.status(200).json( responseData )
 
     } catch (error) {
         throw new ApiError (500, `error while getting deviation details: ${error}`)

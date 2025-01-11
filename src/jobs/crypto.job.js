@@ -33,15 +33,23 @@ const fetchCryptoData = async () => {
                 change24h: price_change_percentage_24h,
             };
 
-            await Crypto.findOneAndUpdate(
-                { coin },
-                { $push: { priceHistory: { price: current_price.usd } }, $set: { latestStats } },
-                { upsert: true, new: true }
-            );
+            let crypto = await Crypto.findOne({ coin })
+
+            if (!crypto) {
+                crypto = new Crypto({
+                    coin,
+                    latestStats,
+                    priceHistory: [{ price: current_price.usd }],
+                })
+            } else {
+                crypto.latestStats = latestStats
+                crypto.priceHistory.push({ price: current_price.usd })
+            }
+
+            await crypto.save()
 
             console.log(`${coin} details fetched from coingecko`)
         }
-
         
     } catch (error) {
         throw new ApiError (500, `Error fetching crypto data: ${error}`)
