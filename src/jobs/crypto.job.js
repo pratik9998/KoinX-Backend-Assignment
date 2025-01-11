@@ -6,7 +6,7 @@ import {ApiError} from "../utils/ApiError.js"
 const fetchCryptoData = async () => {
     try {
 
-        console.log(process.env.COINGECKO_API_KEY)
+        // console.log(process.env.COINGECKO_API_KEY)
         
         const coins = [`bitcoin`, `matic-network`, `ethereum`]
 
@@ -32,6 +32,8 @@ const fetchCryptoData = async () => {
                 marketCap: market_cap.usd,
                 change24h: price_change_percentage_24h,
             };
+
+            // console.log(latestStats)
 
             let crypto = await Crypto.findOne({ coin })
 
