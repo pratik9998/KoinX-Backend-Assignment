@@ -6,7 +6,7 @@ import {ApiError} from "../utils/ApiError.js"
 const fetchCryptoData = async () => {
     try {
 
-        // console.log(process.env.COINGECKO_API_KEY)
+        console.log(process.env.COINGECKO_API_KEY)
         
         const coins = [`bitcoin`, `matic-network`, `ethereum`]
 
