@@ -58,6 +58,7 @@ const fetchCryptoData = async () => {
     }
 }
 
-cron.schedule('* * * * *', fetchCryptoData)
+// cron.schedule('* * * * *', fetchCryptoData) //every minute
+cron.schedule('0 */2 * * *', fetchCryptoData) //every 2 hour
 
 export { fetchCryptoData }
