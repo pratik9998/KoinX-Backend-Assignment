@@ -10,14 +10,14 @@ app.use(cors({
 }))
 app.use(express.urlencoded({extended: true , limit: "16kb"}))
 
-fetchCryptoData()
+fetchCryptoData() // this is the scheduled task
 
-import {getStats} from "./controllers/stats.controller.js"
-import {getDeviation} from "./controllers/deviation.controller.js"
-import {healthCheck} from "./controllers/healthcheck.controller.js"
+import healthCheckRouter from "./routes/healthcheck.route.js"
+import statsRouter from "./routes/stats.route.js"
+import deviationRouter from "./routes/deviation.route.js"
 
-app.post("/", healthCheck) //tested
-app.get("/stats", getStats) //tested
-app.get("/deviation", getDeviation) //tested
+app.use("/api/v1/healthcheck", healthCheckRouter) //tested
+app.use("/api/v1/stats", statsRouter) //tested
+app.use("/api/v1/deviation", deviationRouter) //tested
 
 export {app}
