@@ -58,4 +58,5 @@ cryptoSchema.pre("save", async function (next){
     next()
 })
 
-export default Crypto = mongoose.model("Crypto", cryptoSchema)
+const Crypto = mongoose.model("Crypto", cryptoSchema)
+export default Crypto
