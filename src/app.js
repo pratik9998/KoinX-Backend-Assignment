@@ -16,8 +16,8 @@ import {getStats} from "./controllers/stats.controller.js"
 import {getDeviation} from "./controllers/deviation.controller.js"
 import {healthCheck} from "./controllers/healthcheck.controller.js"
 
+app.post("/", healthCheck) //tested
 app.get("/stats", getStats) //tested
 app.get("/deviation", getDeviation) //tested
-app.post("/healthcheck", healthCheck) //tested
 
 export {app}
